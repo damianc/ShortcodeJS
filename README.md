@@ -78,8 +78,11 @@ Shortcode.register('separator', function () {
 });
 
 /*
- example of the use:
- [separator/]
+    given input:
+    [separator/]
+
+    expected output:
+    <hr />
 */
 ```
 
@@ -90,12 +93,15 @@ It can be done the same way as if it were regular HTML element.
 
 ```javascript
 Shortcode.register('separator', function (attr) {
-	return `<hr style="width: ${attr.width}" />`;
+    return `<hr style="width: ${attr.width}" />`;
 });
 
 /*
- example of the use:
- [separator width="50%"/]
+    given input:
+    [separator width="50%"/]
+
+    expected output:
+    <hr style="width: 50%" />
 */
 ```
 
@@ -106,12 +112,15 @@ Though the example below does not use attributes, passing `attr` parameter is es
 
 ```javascript
 Shortcode.register('frame', function (attr, content) {
-	return `<div style="border: solid 1px #333; padding: 20px">${content}</div>`;
+    return `<div style="border: solid 1px #333; padding: 20px">${content}</div>`;
 });
 
 /*
- example of the use:
- [frame]This content is important.[/frame]
+    given input:
+    [frame]This content is important.[/frame]
+
+    expected output:
+    <div style="border: solid 1px #333; padding: 20px">This content is important.</div>
 */
 ```
 
@@ -121,11 +130,14 @@ Content shortcodes are any less different when it comes to assigning attributes.
 
 ```javascript
 Shortcode.register('cite', function (attr, content) {
-	return `@${attr.user}: ${content}`;
+    return `@${attr.user}: ${content}`;
 });
 
 /*
- example of the use:
- [cite user="damianc"]I hope you will make good use of it.[/cite]
+    given input:
+    [cite user="damianc"]I hope you will make good use of it.[/cite]
+
+    expected output:
+    @damianc: I hope you will make good use of it.
 */
 ```
