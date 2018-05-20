@@ -148,8 +148,9 @@ It may happen that your shortcode is to take a multiple of attributes of which n
 In the case, default values should be guaranted to be delivered.
 
 >  
-> **Note that attribute names must not contain uppercase characters as they will not be preserved.**  
-> Even if you use a shortcode like `[frame borderColor="red"]`, the `attr` object is to contain `bordercolor` property rather than `borderColor`.  
+> **Note that attribute names must not contain uppercase characters as they will not be preserved.**  <br/><br/>
+> Even if you use a shortcode like `[frame borderColor="red"]`, the `attr` object is to contain `bordercolor` property rather than `borderColor`.  <br/><br/>
+> Still, you could use dash-case name, e.g. `[frame border-color="red"]`, in which case the respective property name remains the same, i.e. `border-color` (keep in mind that such a name is required to be surrounded with quotes when accessed).
 >  
 
 ```javascript
