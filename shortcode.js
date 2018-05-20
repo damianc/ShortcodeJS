@@ -4,7 +4,7 @@ var Shortcode = (function () {
 	var InternalAPI = {
 		parseSynthElementAttrs: function (attrsString) {
 			var synthDiv = document.createElement('div');
-			synthDiv.innerHTML = '<span ' + attrsString + '>';
+			synthDiv.innerHTML = '<span ' + attrsString + '></span>';
 
 			var synthElement = synthDiv.firstChild;
 			var synthElementAttrs = synthElement.getAttributeNames();
