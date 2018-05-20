@@ -112,7 +112,7 @@ Though the example below does not use attributes, passing `attr` parameter is es
 
 ```javascript
 Shortcode.register('frame', function (attr, content) {
-    return `<div style="border: solid 1px #333; padding: 20px">${content}</div>`;
+    return `<div style="border: solid 1px #333">${content}</div>`;
 });
 
 /*
@@ -120,7 +120,7 @@ Shortcode.register('frame', function (attr, content) {
     [frame]This content is important.[/frame]
 
     expected output:
-    <div style="border: solid 1px #333; padding: 20px">This content is important.</div>
+    <div style="border: solid 1px #333">This content is important.</div>
 */
 ```
 
@@ -160,7 +160,7 @@ Shortcode.register('frame', function (attr, content) {
         bordercolor: '#333'
     }, attr);
 	
-    return `<div style="border: solid ${settings.borderwidth} ${settings.bordercolor}; padding: 20px">
+    return `<div style="border: solid ${settings.borderwidth} ${settings.bordercolor}">
         ${content}
     </div>`;
 });
@@ -170,6 +170,6 @@ Shortcode.register('frame', function (attr, content) {
     [frame bordercolor="red"]This message is very important![/frame]
 
     expected output:
-    <div style="border: solid 1px red; padding: 20px">This message is very important!</div>
+    <div style="border: solid 1px red">This message is very important!</div>
 */
 ```
