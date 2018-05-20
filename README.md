@@ -141,3 +141,26 @@ Shortcode.register('cite', function (attr, content) {
     @damianc: I hope you will make good use of it.
 */
 ```
+
+## Default attribute values
+
+It may happen that your shortcode is to take a multiple of attributes of which not all are required.
+In the case, default values should be guaranted to be delivered.
+
+>  
+> **Note that attribute names must not contain uppercase characters as they will not be preserved.**  
+> Even if you use a shortcode like `[frame borderColor="red"]`, the `attr` object is to contain `bordercolor` property rather than `borderColor`.  
+>  
+
+```javascript
+Shortcode.register('frame', function (attr, content) {
+    var settings = Object.assign({
+        borderwidth: '1px',
+        bordercolor: '#333'
+    }, attr);
+	
+    return `<div style="border: solid ${settings.borderwidth} ${settings.bordercolor}; padding: 20px">
+        ${content}
+    </div>`;
+});
+```
