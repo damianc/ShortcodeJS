@@ -70,7 +70,7 @@ var Shortcode = (function () {
 
 			while (InternalAPI.remainShortcodes(contentShortcodesPhase)) {
 				contentShortcodesPhase = InternalAPI.parseContentShortcodes(contentShortcodesPhase);
-				if (runIterationNumber > safeIterationNumber) break;
+				if (++runIterationNumber > safeIterationNumber) break;
 			}
 
 			return contentShortcodesPhase;
