@@ -8,7 +8,7 @@ First of all, you need to include _ShortcodeJS_ library. When you're done with t
 the `Shortcode.register()` method. Finally, sources can be parsed by the `Shortcode.parse()` method.
 
 There are two kinds of shortcode:
-* _empty shortcode_ being standalone shortcode with no content surround, e.g. `[shortcode/]`
+* _empty shortcode_ being standalone shortcode with no content surrounded, e.g. `[shortcode/]`
 * _content shortcode_ being shortcode that surrounds a content, e.g. `[shortcode]Content.[/shortcode]`
 
 In addition, both can have attributes assigned, e.g. `[shortcode attr="val"/]`.
@@ -164,4 +164,12 @@ Shortcode.register('frame', function (attr, content) {
         ${content}
     </div>`;
 });
+
+/*
+    given input:
+    [frame bordercolor="red"]This message is very important![/frame]
+
+    expected output:
+    <div style="border: solid 1px red; padding: 20px">This message is very important!</div>
+*/
 ```
