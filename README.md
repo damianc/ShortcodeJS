@@ -17,8 +17,8 @@ In addition, both can have attributes assigned, e.g. `[shortcode attr="val"/]`.
 
 **`Shortcode.register(name, cb)`**
 
-Registers new shortcode.
-Returns: `undefined`.
+Registers new shortcode.  
+Returns: `undefined`.  
 Parameters:
 * `name` - a `string` that represents the name of the shortcode
 * `cb` - a callback `function` that returns HTML markup, having taken up to 2 parameters:
@@ -27,8 +27,8 @@ Parameters:
 
 **`Shortcode.parse(source)`**
 
-Parses a source turning registered shortcodes into respecitve HTML markup.
-Returns: `string` being HTML markup.
+Parses a source turning registered shortcodes into respecitve HTML markup.  
+Returns: `string` being HTML markup.  
 Parameters:
 * `source` - a `string` that holds the content to be parsed
 
@@ -69,7 +69,7 @@ a content that will be processed.
 
 ### Empty shortcode
 
-Simplest component only consists of name.
+Simplest component only consists of name.  
 Neither component's attributes nor its content is involved, therefore no parameters are used with the callback composing HTML markup.
 
 ```javascript
@@ -85,7 +85,7 @@ Shortcode.register('separator', function () {
 
 ### Empty shortcode with attributes
 
-Right beside the name, a shortcode can have attributes assigned.
+Right beside the name, a shortcode can have attributes assigned.  
 It can be done the same way as if it were regular HTML element.
 
 ```javascript
@@ -101,7 +101,7 @@ Shortcode.register('separator', function (attr) {
 
 ### Content shortcode
 
-As well, the shortcodes are able to hold content, including another nested shortcodes.
+As well, the shortcodes are able to hold content, including another nested shortcodes.  
 Though the example below does not use attributes, passing `attr` parameter is essential as it precedes the `content` parameter that we make use of.
 
 ```javascript
