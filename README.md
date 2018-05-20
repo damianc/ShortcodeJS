@@ -15,7 +15,7 @@ In addition, both can have attributes assigned, e.g. `[shortcode attr="val"/]`.
 
 ### Methods overview
 
-*`Shortcode.register(name, cb)`*
+**`Shortcode.register(name, cb)`**
 
 Registers new shortcode.
 Returns: `undefined`.
@@ -25,7 +25,7 @@ Parameters:
 	* `attr` - an `object` containing attributes assigned to a shortcode
 	* `content` - a `string` representing the content of a shortcode
 
-*`Shortcode.parse(source)`*
+**`Shortcode.parse(source)`**
 
 Parses a source turning registered shortcodes into respecitve HTML markup.
 Returns: `string` being HTML markup.
