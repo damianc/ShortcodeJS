@@ -74,7 +74,7 @@ Neither component's attributes nor its content is involved, therefore no paramet
 
 ```javascript
 Shortcode.register('separator', function () {
-	return '<hr />';
+    return '<hr />';
 });
 
 /*
