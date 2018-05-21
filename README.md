@@ -44,7 +44,7 @@ The table below shows available options to set.
 
 Option | Default value | Description
 -------|---------------|------------
-`attributeNameToCamelCase` | true | Whether to turn dash-case attribute name into camelCase, for example `sc-attr` into `scAttr`.
+`attributeNameToCamelCase` | `true` | Whether to turn dash-case attribute name into camelCase, for example `sc-attr` into `scAttr`.
 
 
 ### Complete example
