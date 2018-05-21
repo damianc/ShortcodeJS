@@ -1,4 +1,4 @@
-var Shortcode = (function (document) {
+var Shortcode = function (document) {
 	var shortcodes = {};
 	var settings = {
 		attributeNameToCamelCase: true
@@ -91,7 +91,7 @@ var Shortcode = (function (document) {
 	};
 
 	return PublicAPI;
-});
+};
 
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 	module.exports = Shortcode;

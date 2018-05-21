@@ -160,7 +160,7 @@ Shortcode.register('cite', function (attr, content) {
 ## Default attribute values
 
 It may happen that your shortcode is to take a multiple of attributes of which not all are required.
-In the case, default values should be guaranted to be delivered.
+In the case, default values should be guaranteed to be delivered.
 
 >  
 > **Note that attribute names must not contain uppercase characters as they will not be preserved.**  <br/><br/>
