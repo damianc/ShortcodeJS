@@ -81,7 +81,7 @@ var Shortcode = (function (document) {
 });
 
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports = Shortcode;
+	module.exports = Shortcode;
 } else {
 	Shortcode = Shortcode(window.document);
 }
