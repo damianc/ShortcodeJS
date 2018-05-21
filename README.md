@@ -44,7 +44,7 @@ The table below shows available options to set.
 
 Option | Default value | Description
 -------|---------------|------------
-attributeNameToCamelCase | true | Whether to turn dash-case attribute name into camelCase, for example `sc-attr` into `scAttr`.
+`attributeNameToCamelCase` | true | Whether to turn dash-case attribute name into camelCase, for example `sc-attr` into `scAttr`.
 
 
 ### Complete example
@@ -192,7 +192,7 @@ Shortcode.register('frame', function (attr, content) {
 
 ## Combined attribute names
 
-By default, attribute names consisting of the words separated by dash are turning into the camelCase form to be accessed with `attr` the object in the shortcode callback. Why that happens is because `attributeNameToCamelCase` settings is set to `true` by default. To keep attribute names dash-case set this option to `false` with `Shortcode.setting()` method.
+By default, attribute names consisting of the words separated by dash are turning into the camelCase form to be accessed with the `attr` object in the shortcode callback (e.g. `sc-attr` -> `scAttr`). Why that happens is because the `attributeNameToCamelCase` setting is set to `true` by default. To keep attribute names dash-case set this option to `false` with `Shortcode.setting()` method.
 
 ```javascript
 Shortcode.setting('attributeNameToCamelCase', false);
