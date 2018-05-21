@@ -1,0 +1,23 @@
+{
+  "name": "shortcodejs",
+  "version": "1.0.0",
+  "description": "A tiny library allowing to compose website components being used repeatedly.",
+  "main": "shortcode.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/damianc/ShortcodeJS.git"
+  },
+  "author": "damianc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/damianc/ShortcodeJS/issues"
+  },
+  "homepage": "https://github.com/damianc/ShortcodeJS#readme",
+  "devDependencies": {
+    "jasmine": "^3.1.0",
+    "jsdom": "^11.10.0"
+  }
+}
