@@ -178,7 +178,7 @@ Shortcode.register('frame', function (attr, content) {
 ## Running out of browser
 
 ShortcodeJS is supposed to run in browser environment that delivers the `window.document` object.
-For environments like Node.js, function returning ShortcodeJS API is provided - this function takes appropriate `document` object that can be derived from an external library like [jsdom](https://github.com/jsdom/jsdom).
+For environments like Node.js (without the `document` object by default), function returning ShortcodeJS API is provided - this function takes appropriate `document` object that can be derived from an external library like [jsdom](https://github.com/jsdom/jsdom).
 
 ```javascript
     const { JSDOM } = require('jsdom');
