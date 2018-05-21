@@ -173,3 +173,18 @@ Shortcode.register('frame', function (attr, content) {
     <div style="border: solid 1px red">This message is very important!</div>
 */
 ```
+
+
+## Running out of browser
+
+ShortcodeJS is supposed to run in browser environment that delivers the `window.document` object.
+For environments like Node.js, function returning ShortcodeJS API is provided - this function takes appropriate `document` object that can be derived from an external library like [jsdom](https://github.com/jsdom/jsdom).
+
+```javascript
+    const { JSDOM } = require('jsdom');
+    const dom = new JSDOM('<!DOCTYPE html></html>');
+    const { document } = dom.window;
+    const Shortcode = require('../shortcode')(document);
+
+    // ...
+```

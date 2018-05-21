@@ -1,4 +1,4 @@
-var Shortcode = (function () {
+var Shortcode = (function (document) {
 	var shortcodes = {};
 
 	var InternalAPI = {
@@ -78,4 +78,10 @@ var Shortcode = (function () {
 	};
 
 	return PublicAPI;
-})();
+});
+
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+    module.exports = Shortcode;
+} else {
+	Shortcode = Shortcode(window.document);
+}
