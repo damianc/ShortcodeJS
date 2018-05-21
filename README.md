@@ -184,7 +184,7 @@ For environments like Node.js, function returning ShortcodeJS API is provided - 
     const { JSDOM } = require('jsdom');
     const dom = new JSDOM('<!DOCTYPE html></html>');
     const { document } = dom.window;
-    const Shortcode = require('../shortcode')(document);
+    const Shortcode = require('./shortcode')(document);
 
     // ...
 ```
