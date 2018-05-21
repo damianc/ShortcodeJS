@@ -1,5 +1,8 @@
 var Shortcode = (function (document) {
 	var shortcodes = {};
+	var settings = {
+		attributeNameToCamelCase: true
+	};
 
 	var InternalAPI = {
 		parseSynthElementAttrs: function (attrsString) {
@@ -11,7 +14,13 @@ var Shortcode = (function (document) {
 			var attrs = {};
 
 			synthElementAttrs.forEach(function (attrName) {
-				attrs[attrName] = synthElement.getAttribute(attrName);
+				var finalAttrName = attrName;
+
+				if (settings.attributeNameToCamelCase === true) {
+					finalAttrName = attrName.replace(/\-(\w)/g, (char) => char[1].toUpperCase());
+				}
+
+				attrs[finalAttrName] = synthElement.getAttribute(attrName);
 			});
 
 			return attrs;
@@ -74,6 +83,10 @@ var Shortcode = (function (document) {
 			}
 
 			return contentShortcodesPhase;
+		},
+
+		setting: function (option, value) {
+			settings[option] = value;
 		}
 	};
 

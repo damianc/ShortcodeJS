@@ -32,6 +32,21 @@ Returns: `string` being HTML markup.
 Parameters:
 * `source` - a `string` that holds the content to be parsed
 
+**`Shortcode.setting(option, value)`**
+
+Sets a particular option using given value.  
+Returns: `undefined`.  
+Parameters:
+* `option` - a `string` representing a name of the option being set
+* `value` - a `string` representing a value to set
+
+The table below shows available options to set.
+
+Option | Default value | Description
+-------|---------------|------------
+attributeNameToCamelCase | true | Whether to turn dash-case attribute name into camelCase, for example `sc-attr` into `scAttr`.
+
+
 ### Complete example
 
 ```html
@@ -150,7 +165,8 @@ In the case, default values should be guaranted to be delivered.
 >  
 > **Note that attribute names must not contain uppercase characters as they will not be preserved.**  <br/><br/>
 > Even if you use a shortcode like `[frame borderColor="red"]`, the `attr` object is to contain `bordercolor` property rather than `borderColor`.  <br/><br/>
-> Still, you could use dash-case name, e.g. `[frame border-color="red"]`, in which case the respective property name remains the same, i.e. `border-color` (keep in mind that such a name is required to be surrounded with quotes when accessed).
+> Still, you could use dash-case name, e.g. `[frame border-color="red"]`, in which case the respective property name can remain the same, i.e. `border-color` (keep in mind that such a name is required to be surrounded with quotes when accessed).
+See [Combined attribute names](#combined-attribute-names) for details.
 >  
 
 ```javascript
@@ -174,6 +190,13 @@ Shortcode.register('frame', function (attr, content) {
 */
 ```
 
+## Combined attribute names
+
+By default, attribute names consisting of the words separated by dash are turning into the camelCase form to be accessed with `attr` the object in the shortcode callback. Why that happens is because `attributeNameToCamelCase` settings is set to `true` by default. To keep attribute names dash-case set this option to `false` with `Shortcode.setting()` method.
+
+```javascript
+Shortcode.setting('attributeNameToCamelCase', false);
+```
 
 ## Running out of browser
 

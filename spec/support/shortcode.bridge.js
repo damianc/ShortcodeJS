@@ -24,6 +24,10 @@ Shortcode.register('link', function (attr) {
 	return `<a href="${settings.to}">${settings.text}</a>`;
 });
 
+Shortcode.register('justAttrs', function (attr) {
+	return Object.keys(attr).join(',');
+});
+
 /*
 	content shortcode without attributes
 */
