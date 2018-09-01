@@ -93,8 +93,8 @@ var Shortcode = function (document) {
 	return PublicAPI;
 };
 
-if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-	module.exports = Shortcode;
-} else {
+if (typeof window != 'undefined' && typeof window.document != 'undefined') {
 	Shortcode = Shortcode(window.document);
+} else if (typeof module != 'undefined' && typeof module.exports != 'undefined') {
+	module.exports = Shortcode;
 }
