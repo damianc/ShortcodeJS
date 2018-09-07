@@ -32,7 +32,7 @@ Returns: `string` being HTML markup.
 Parameters:
 * `source` - a `string` that holds the content to be parsed
 
-**`Shortcode.setting(option, value)`**
+**`Shortcode.set(option, value)`**
 
 Sets a particular option using given value.  
 Returns: `undefined`.  
@@ -192,10 +192,10 @@ Shortcode.register('frame', function (attr, content) {
 
 ## Combined attribute names
 
-By default, attribute names consisting of the words separated by dash are turning into the camelCase form to be accessed with the `attr` object in the shortcode callback (e.g. `sc-attr` -> `scAttr`). Why that happens is because the `attributeNameToCamelCase` setting is set to `true` by default. To keep attribute names dash-case set this option to `false` with `Shortcode.setting()` method.
+By default, attribute names consisting of the words separated by dash are turning into the camelCase form to be accessed with the `attr` object in the shortcode callback (e.g. `sc-attr` -> `scAttr`). Why that happens is because the `attributeNameToCamelCase` setting is set to `true` by default. To keep attribute names dash-case set this option to `false` with `Shortcode.set()` method.
 
 ```javascript
-Shortcode.setting('attributeNameToCamelCase', false);
+Shortcode.set('attributeNameToCamelCase', false);
 ```
 
 ## Running out of browser
