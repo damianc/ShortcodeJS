@@ -1,7 +1,7 @@
 const { JSDOM } = require('jsdom');
 const dom = new JSDOM('<!DOCTYPE html></html>');
 const { document } = dom.window;
-const Shortcode = require('../../shortcode')(document);
+const Shortcode = require('../../src/shortcode')(document);
 
 /*
 	empty shortcode without attributes
