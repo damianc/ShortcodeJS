@@ -86,21 +86,20 @@ var Shortcode = function (document) {
 		},
 
 		parse: function (source, vars) {
-			var preParsingInterpolation = InternalAPI.interpolation.preParsing(source, vars);
-			var emptyShortcodesPhase = InternalAPI.parseEmptyShortcodes(preParsingInterpolation);
-			var contentShortcodesPhase = InternalAPI.parseContentShortcodes(emptyShortcodesPhase);
+			var outputString = InternalAPI.interpolation.preParsing(source, vars);
+			outputString = InternalAPI.parseEmptyShortcodes(outputString);
+			outputString = InternalAPI.parseContentShortcodes(outputString);
 
 			var safeIterationNumber = InternalAPI.safeIterationNumber(source);
 			var runIterationNumber = 1;
 
-			while (InternalAPI.remainShortcodes(contentShortcodesPhase)) {
-				contentShortcodesPhase = InternalAPI.parseContentShortcodes(contentShortcodesPhase);
+			while (InternalAPI.remainShortcodes(outputString)) {
+				outputString = InternalAPI.parseContentShortcodes(outputString);
 				if (++runIterationNumber > safeIterationNumber) break;
 			}
 
-			contentShortcodesPhase = InternalAPI.interpolation.postParsing(contentShortcodesPhase, vars);
-
-			return contentShortcodesPhase;
+			outputString = InternalAPI.interpolation.postParsing(outputString, vars);
+			return outputString;
 		},
 
 		set: function (option, value) {
