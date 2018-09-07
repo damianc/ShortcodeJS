@@ -85,7 +85,7 @@ var Shortcode = function (document) {
 			return contentShortcodesPhase;
 		},
 
-		setting: function (option, value) {
+		set: function (option, value) {
 			settings[option] = value;
 		}
 	};

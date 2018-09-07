@@ -7,7 +7,7 @@ describe('attributeNameToCamelCase setting', () => {
 		var output = 'attr-a,attr-b';
 
 		// turn dash-case to camelCase translating off
-		Shortcode.setting('attributeNameToCamelCase', false);
+		Shortcode.set('attributeNameToCamelCase', false);
 
 		expect(
 			Shortcode.parse(input)
@@ -19,7 +19,7 @@ describe('attributeNameToCamelCase setting', () => {
 		var output = 'attrA,attrB';
 
 		// turn dash-case to camelCase translating on
-		Shortcode.setting('attributeNameToCamelCase', true);
+		Shortcode.set('attributeNameToCamelCase', true);
 
 		expect(
 			Shortcode.parse(input)
