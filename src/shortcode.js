@@ -52,6 +52,21 @@ var Shortcode = function (document) {
 			return parsedSource;
 		},
 
+		interpolation: {
+			interpolate: function (inputString, vars, varRegExp) {
+				return inputString.replace(varRegExp, function (varReference, varName) {
+					if (vars && vars[varName]) return vars[varName];
+					return varReference;
+				});
+			},
+			preParsing: function (source, vars) {
+				return this.interpolate(source, vars, /@@:(\w+)/g);
+			},
+			postParsing: function (source, vars) {
+				return this.interpolate(source, vars, /@:(\w+)/g);
+			}
+		},
+
 		remainShortcodes: function (source) {
 			var shortcodeNames = Object.keys(shortcodes).join('|');
 			var reShortcodeNames = new RegExp('\\[\\s*(' + shortcodeNames + ')');
@@ -70,8 +85,9 @@ var Shortcode = function (document) {
 			shortcodes[name] = cb;
 		},
 
-		parse: function (source) {
-			var emptyShortcodesPhase = InternalAPI.parseEmptyShortcodes(source);
+		parse: function (source, vars) {
+			var preParsingInterpolation = InternalAPI.interpolation.preParsing(source, vars);
+			var emptyShortcodesPhase = InternalAPI.parseEmptyShortcodes(preParsingInterpolation);
 			var contentShortcodesPhase = InternalAPI.parseContentShortcodes(emptyShortcodesPhase);
 
 			var safeIterationNumber = InternalAPI.safeIterationNumber(source);
@@ -81,6 +97,8 @@ var Shortcode = function (document) {
 				contentShortcodesPhase = InternalAPI.parseContentShortcodes(contentShortcodesPhase);
 				if (++runIterationNumber > safeIterationNumber) break;
 			}
+
+			contentShortcodesPhase = InternalAPI.interpolation.postParsing(contentShortcodesPhase, vars);
 
 			return contentShortcodesPhase;
 		},
