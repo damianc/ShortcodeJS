@@ -36,6 +36,10 @@ Shortcode.register('b', function (attr, content) {
 	return `<b>${content}</b>`;
 });
 
+Shortcode.register('u', function (attr, content) {
+	return `<u>${content}</u>`;
+});
+
 /*
 	content shortcode with attributes
 */
