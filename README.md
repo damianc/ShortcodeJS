@@ -56,25 +56,25 @@ Option | Default value | Description
 <html>
 
 <head>
-	<meta charset="utf-8" />
-	<title>ShortcodeJS</title>
+    <meta charset="utf-8" />
+    <title>ShortcodeJS</title>
 </head>
 
 <body>
-	<blockquote id="quotation">
-		<p>We don't need another JavaScript framework. We need stuff like the [b]ShortcodeJS[/b] library.</p>
+    <blockquote id="quotation">
+        <p>We don't need another JavaScript framework. We need stuff like the [b]ShortcodeJS[/b] library.</p>
         <cite>~ @:author</cite>
-	</blockquote>
+    </blockquote>
 
-	<script src="shortcode.js"></script>
-	<script>
-		Shortcode.register('b', function (attr, content) {
-			return `<b>${content}</b>`;
-		});
+    <script src="shortcode.js"></script>
+    <script>
+        Shortcode.register('b', function (attr, content) {
+            return `<b>${content}</b>`;
+        });
 
-		var quotation = document.getElementById('quotation');
-		quotation.innerHTML = Shortcode.parse(quotation.innerHTML, {author: 'A. Lincoln'});
-	</script>
+        var quotation = document.getElementById('quotation');
+        quotation.innerHTML = Shortcode.parse(quotation.innerHTML, {author: 'A. Lincoln'});
+    </script>
 </body>
 
 </html>
@@ -191,6 +191,11 @@ frame.innerHTML = Shortcode.parse(frame.innerHTML, {
     languageName: 'JavaScript',
     libraryName: 'ShortcodeJS'
 });
+
+/*
+    expected output:
+    Among JavaScript libraries worth to discover is <b>ShortcodeJS</b>.
+*/
 ```
 
 As done in the code above, using pre-parsing variables is recommended mostly for things that can affect process of parsing a shortcode,
