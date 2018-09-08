@@ -86,7 +86,13 @@ var Shortcode = function (document) {
 		},
 
 		parse: function (source, vars) {
-			var outputString = InternalAPI.interpolation.preParsing(source, vars);
+			var outputString = source;
+
+			// interpolate pre-parsing variables if present
+			if (vars) {
+				outputString = InternalAPI.interpolation.preParsing(source, vars);
+			}
+
 			outputString = InternalAPI.parseEmptyShortcodes(outputString);
 			outputString = InternalAPI.parseContentShortcodes(outputString);
 
@@ -98,7 +104,11 @@ var Shortcode = function (document) {
 				if (++runIterationNumber > safeIterationNumber) break;
 			}
 
-			outputString = InternalAPI.interpolation.postParsing(outputString, vars);
+			// interpolate post-parsing variables if present
+			if (vars) {
+				outputString = InternalAPI.interpolation.postParsing(outputString, vars);
+			}
+			
 			return outputString;
 		},
 
