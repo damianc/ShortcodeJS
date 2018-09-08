@@ -25,12 +25,14 @@ Parameters:
 	* `attr` - an `object` containing attributes assigned to a shortcode
 	* `content` - a `string` representing the content of a shortcode
 
-**`Shortcode.parse(source)`**
+**`Shortcode.parse(source[, variables])`**
 
 Parses a source turning registered shortcodes into respecitve HTML markup.  
 Returns: `string` being HTML markup.  
 Parameters:
 * `source` - a `string` that holds the content to be parsed
+* `variables` - a `object` that holds variables that can be interpolated in the content
+(consult [Interpolating variables](#interpolating-variables) for details)
 
 **`Shortcode.set(option, value)`**
 
@@ -59,9 +61,10 @@ Option | Default value | Description
 </head>
 
 <body>
-	<p id="content">
-		This paragraph is meant to show you how you can use [b]ShortcodeJS[/b] library.
-	</p>
+	<blockquote id="quotation">
+		<p>We don't need another JavaScript framework. We need stuff like the [b]ShortcodeJS[/b] library.</p>
+        <cite>~ @:author</cite>
+	</blockquote>
 
 	<script src="shortcode.js"></script>
 	<script>
@@ -69,8 +72,8 @@ Option | Default value | Description
 			return `<b>${content}</b>`;
 		});
 
-		var content = document.getElementById('content');
-		content.innerHTML = Shortcode.parse(content.innerHTML);
+		var quotation = document.getElementById('quotation');
+		quotation.innerHTML = Shortcode.parse(quotation.innerHTML, {author: 'A. Lincoln'});
 	</script>
 </body>
 
@@ -156,6 +159,43 @@ Shortcode.register('cite', function (attr, content) {
     @damianc: I hope you will make good use of it.
 */
 ```
+
+### Interpolating variables
+
+An input string can have assigned variables whose values will be inserted when parsing.
+To indicate placeholder for a variable, it's necessary to use `@:name` or `@@:name` syntax.
+There are two kinds of such variables:
+
+* _pre-parsing_ - these variables will be interpolated before processing shortcodes (use `@@:name` syntax)
+* _post-parsing_ - these variables will be interpolated after processing shortcodes (use `@:name` syntax)
+
+Values of variables are being received from an object passed as a second parameter of the `parse()` method call.
+The keys of the object are mapped to variable names used within an input string while while their values correspond to the
+values of the object's properties with identical names.
+
+In the code below, following steps are being done:
+* `@@:textDecoration` is replaced with `b` string
+* the input string with shortcodes embedded is processed
+* `@:languageName` is replaced with `JavaScript`, `@:libraryName` is replaced with `ShortcodeJS`
+
+```html
+<p id="frame">
+    Among @:languageName libraries worth to discover is [@@:textDecoration]@:libraryName[/@@:textDecoration].
+</p>
+```
+
+```javascript
+var frame = document.getElementById('frame');
+frame.innerHTML = Shortcode.parse(frame.innerHTML, {
+    textDecoration: 'bold' ? 'b' : 'u',
+    languageName: 'JavaScript',
+    libraryName: 'ShortcodeJS'
+});
+```
+
+As done in the code above, using pre-parsing variables is recommended mostly for things that can affect process of parsing a shortcode,
+i.e., name of a shortcode or values that its attributes have assigned. Other values can be inserted after the shortcode parsing is
+perfrormed; this is what post-parsing variables are meant to.
 
 ## Default attribute values
 
