@@ -53,17 +53,17 @@ var Shortcode = function (document) {
 		},
 
 		interpolation: {
-			interpolate: function (inputString, vars, varRegExp) {
+			interpolate: function (inputString, varsObject, varRegExp) {
 				return inputString.replace(varRegExp, function (varReference, varName) {
-					if (vars && vars[varName]) return vars[varName];
+					if (varsObject && varsObject[varName]) return varsObject[varName];
 					return varReference;
 				});
 			},
-			preParsing: function (source, vars) {
-				return this.interpolate(source, vars, /@@:(\w+)/g);
+			preParsing: function (source, varsObject) {
+				return this.interpolate(source, varsObject, /@@:(\w+)/g);
 			},
-			postParsing: function (source, vars) {
-				return this.interpolate(source, vars, /@:(\w+)/g);
+			postParsing: function (source, varsObject) {
+				return this.interpolate(source, varsObject, /@:(\w+)/g);
 			}
 		},
 
