@@ -10,6 +10,22 @@
     "type": "git",
     "url": "git+https://github.com/damianc/ShortcodeJS.git"
   },
+  "keywords": [
+    "wordpress",
+    "php",
+    "javascript",
+    "shortcode",
+    "blog",
+    "post",
+    "article",
+    "library",
+    "utils",
+    "helpers",
+    "directive",
+    "directives",
+    "template",
+    "html"
+  ],
   "author": "damianc",
   "license": "ISC",
   "bugs": {
